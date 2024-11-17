@@ -6,19 +6,12 @@ OUTPUT_FILENAME = "output.json"
 
 
 def task() -> None:
-    # Открываем CSV файл для чтения
-    with open(INPUT_FILENAME, 'r', newline='') as csv_file:
-        # Создаем объект CSV читателя для разбора файла
-        reader = csv.DictReader(csv_file)
+    with open(INPUT_FILENAME, 'r', newline='') as csv_f:
+        read = csv.DictReader(csv_f)
+        data = [row for row in read] 
 
-        # Преобразуем данные в список словарей
-        data = [row for row in reader]  # Получаем список записей
-
-    # Открываем JSON файл для записи
-    with open(OUTPUT_FILENAME, 'w') as json_file:
-        # Сериализуем данные в JSON с отступами равными 4
-        json.dump(data, json_file, indent=4)
-
+    with open(OUTPUT_FILENAME, 'w') as json_f:
+        json.dump(data, json_f, indent=4)
 
 if __name__ == '__main__':
     # Нужно для проверки
