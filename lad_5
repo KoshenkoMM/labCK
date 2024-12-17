@@ -1,0 +1,155 @@
+import doctest
+
+
+class Chair:
+    def __init__(self, material: str, height: float, weight: float):
+        """
+        Создание и подготовка к работе объекта "Стул"
+
+        :param material: Материал стула
+        :param height: Высота стула
+        :param weight: Вес стула 
+
+        Примеры:
+        >>> chair = Chair("wood", 90.0, 5.0)  # инициализация экземпляра класса
+        """
+        if not isinstance(material, str):
+            raise TypeError("Материал стула должен быть строкой")
+        self.material = material
+
+        if not isinstance(height, (int, float)):
+            raise TypeError("Высота стула должна быть типа int или float")
+        if height <= 0:
+            raise ValueError("Высота стула должна быть положительным числом")
+        self.height = height
+
+        if not isinstance(weight, (int, float)):
+            raise TypeError("Вес стула должен быть типа int или float")
+        if weight <= 0:
+            raise ValueError("Вес стула должен быть положительным числом")
+        self.weight = weight
+
+    def adjust_height(self, new_height: float) -> None:
+        """
+        Регулировка высоты стула.
+
+        :param new_height: Новая высота стула (в см)
+
+        Примеры:
+        >>> chair = Chair("wood", 90.0, 5.0)
+        >>> chair.adjust_height(100.0)
+        """
+        ...
+
+    def get_material(self) -> str:
+        """
+        Получение материала стула.
+
+        :return: Материал стула
+
+        Примеры:
+        >>> chair = Chair("wood", 90.0, 5.0)
+        >>> chair.get_material()
+        """
+        ...
+
+class Tree:
+    def __init__(self, species: str, age: int, height: float):
+        """
+        Создание и подготовка к работе объекта "Дерево"
+
+        :param species: Вид дерева
+        :param age: Возраст дерева 
+        :param height: Высота дерева 
+        Примеры:
+        >>> tree = Tree("oak", 50, 20.0)  # инициализация экземпляра класса
+        """
+        if not isinstance(species, str):
+            raise TypeError("Вид дерева должен быть строкой")
+        self.species = species
+
+        if not isinstance(age, int):
+            raise TypeError("Возраст дерева должен быть целым числом")
+        if age <= 0:
+            raise ValueError("Возраст дерева должен быть положительным числом")
+        self.age = age
+
+        if not isinstance(height, (int, float)):
+            raise TypeError("Высота дерева должна быть типа int или float")
+        if height <= 0:
+            raise ValueError("Высота дерева должна быть положительным числом")
+        self.height = height
+
+    def grow(self, growth: float) -> None:
+        """
+        Рост дерева.
+
+        :param growth: Рост дерева (в метрах)
+
+        Примеры:
+        >>> tree = Tree("oak", 50, 20.0)
+        >>> tree.grow(1.0)
+        """
+        ...
+
+    def get_age(self) -> int:
+        """
+        Получение возраста дерева.
+
+        :return: Возраст дерева
+
+        Примеры:
+        >>> tree = Tree("oak", 50, 20.0)
+        >>> tree.get_age()
+        """
+        ...
+
+class Stack:
+    def __init__(self, capacity: int, current_size: int):
+        """
+        Создание и подготовка к работе объекта "Стек"
+
+        :param capacity: Емкость стека
+        :param current_size: Текущий размер стека
+
+        Примеры:
+        >>> stack = Stack(100, 0)  # инициализация экземпляра класса
+        """
+        if not isinstance(capacity, int):
+            raise TypeError("Емкость стека должна быть целым числом")
+        if capacity <= 0:
+            raise ValueError("Емкость стека должна быть положительным числом")
+        self.capacity = capacity
+
+        if not isinstance(current_size, int):
+            raise TypeError("Текущий размер стека должен быть целым числом")
+        if current_size < 0:
+            raise ValueError("Текущий размер стека не может быть отрицательным числом")
+        self.current_size = current_size
+
+    def push(self, item: any) -> None:
+        """
+        Добавление элемента в стек.
+
+        :param item: Элемент для добавления
+
+        Примеры:
+        >>> stack = Stack(100, 0)
+        >>> stack.push(10)
+        """
+        ...
+
+    def pop(self) -> any:
+        """
+        Извлечение элемента из стека.
+
+        :return: Извлеченный элемент
+
+        Примеры:
+        >>> stack = Stack(100, 1)
+        >>> stack.pop()
+        """
+        ...
+
+if __name__ == "__main__":
+    doctest.testmod()
