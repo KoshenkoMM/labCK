@@ -1,0 +1,104 @@
+class Vehicle:
+    """Базовый класс для транспортных средств."""
+
+    def __init__(self, brand: str, model: str, year: int):
+        """
+        Инициализация транспортного средства.
+
+        :param brand: Марка транспортного средства.
+        :param model: Модель транспортного средства.
+        :param year: Год выпуска транспортного средства.
+        """
+        self._brand = brand
+        self._model = model
+        self._year = year
+
+    @property
+    def brand(self) -> str:
+        """Возвращает марку транспортного средства."""
+        return self._brand
+
+    @property
+    def model(self) -> str:
+        """Возвращает модель транспортного средства."""
+        return self._model
+
+    @property
+    def year(self) -> int:
+        """Возвращает год выпуска транспортного средства."""
+        return self._year
+
+    def start_engine(self) -> str:
+        """Запускает двигатель транспортного средства."""
+        return "Двигатель запущен."
+
+    def __str__(self) -> str:
+        """Возвращает строковое представление транспортного средства."""
+        return f"Транспортное средство: {self.brand} {self.model}, {self.year} года."
+
+    def __repr__(self) -> str:
+        """Возвращает официальное строковое представление транспортного средства."""
+        return f"{self.__class__.__name__}(brand={self.brand!r}, model={self.model!r}, year={self.year})"
+class Car(Vehicle):
+    """Класс для легковых автомобилей."""
+
+    def __init__(self, brand: str, model: str, year: int, num_doors: int):
+        """
+        Инициализация легкового автомобиля.
+
+        :param brand: Марка автомобиля.
+        :param model: Модель автомобиля.
+        :param year: Год выпуска автомобиля.
+        :param num_doors: Количество дверей автомобиля.
+        """
+        super().__init__(brand, model, year)
+        self._num_doors = num_doors
+
+    @property
+    def num_doors(self) -> int:
+        """Возвращает количество дверей автомобиля."""
+        return self._num_doors
+
+    def start_engine(self) -> str:
+        """Запускает двигатель автомобиля. Перегружен для учета особенностей легковых автомобилей."""
+        # Перегрузка метода для учета особенностей легковых автомобилей, например, проверки наличия ключа.
+        return "Двигатель легкового автомобиля запущен."
+
+    def __str__(self) -> str:
+        """Возвращает строковое представление легкового автомобиля."""
+        return f"Легковой автомобиль: {self.brand} {self.model}, {self.year} года, {self.num_doors} дверей."
+
+    def __repr__(self) -> str:
+        """Возвращает официальное строковое представление легкового автомобиля."""
+        return f"{self.__class__.__name__}(brand={self.brand!r}, model={self.model!r}, year={self.year}, num_doors={self.num_doors})"
+class Truck(Vehicle):
+    """Класс для грузовых автомобилей."""
+
+    def __init__(self, brand: str, model: str, year: int, load_capacity: float):
+        """
+        Инициализация грузового автомобиля.
+
+        :param brand: Марка автомобиля.
+        :param model: Модель автомобиля.
+        :param year: Год выпуска автомобиля.
+        :param load_capacity: Грузоподъемность автомобиля в тоннах.
+        """
+        super().__init__(brand, model, year)
+        self._load_capacity = load_capacity
+
+    @property
+    def load_capacity(self) -> float:
+        """Возвращает грузоподъемность автомобиля."""
+        return self._load_capacity
+
+    def start_engine(self) -> str:
+        """Запускает двигатель грузового автомобиля. Унаследован от базового класса."""
+        return super().start_engine()
+
+    def __str__(self) -> str:
+        """Возвращает строковое представление грузового автомобиля."""
+        return f"Грузовой автомобиль: {self.brand} {self.model}, {self.year} года, грузоподъемность {self.load_capacity} тонн."
+
+    def __repr__(self) -> str:
+        """Возвращает официальное строковое представление грузового автомобиля."""
+        return f"{self.__class__.__name__}(brand={self.brand!r}, model={self.model!r}, year={self.year}, load_capacity={self.load_capacity})"
